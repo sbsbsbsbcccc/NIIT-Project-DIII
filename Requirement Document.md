@@ -6,7 +6,7 @@
 
 
 
-### Task 1 - Visit Log Data Fetch
+### Task 1 - Visit Log Data Fetch - Michelangelo 廖
 
 #### Requirement
 
@@ -40,7 +40,7 @@
 
 
 
-### Task4 - Front End Optimization
+### Task4 - Front End Optimization - Frank 姜
 
 #### Requirement
 
