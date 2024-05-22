@@ -5,28 +5,21 @@
 + 不懂如何具体实现时ChatGPT是很好的辅助 . 
 
 
-
-### Task 1 - Visit Log Data Fetch - Michelangelo 廖
-
-#### Requirement
-
-+ 需收集的数据 : 网站具体的分支名 , 访问IP , 访问时间等 ...
-+ 访问IP如果可能的话把其与地区对应起来 . 
-+ 需对数据进行的处理 : 将收集的数据格式化如`aaa | BBB | ccc \n` , 并清理脏数据 . 
-+ 将处理后的数据储存在文件中 . 
-+ 完成的状态 : 
-  + 点击运行 , 就能收集近1000条网站的访问记录 , 并存储在Windows系统下的某个文件中 . 
-  + 将文件的格式记录下来 . 
-
-
-
-### Task2 - Big Data Processing - Willson 余
+### Task1 - Big Data Processing - Willson 余
 
 #### Requirement
 
++ 数据集 / 爬取数据(暂定)
 + 将Task1所收集到的文件用Flume从Windows系统上转移到HDFS . 
 + 用Hive生成表格 , 加载HDFS上的文件并进行Mapreduce工作 . 
 + 将Hive上的数据用Sqoop转移到同机Mysql . 
+
+
+### Task2 - Machine Learning Combinined with Mapreduce
+
+#### Requirement
+
++ (暂定)
 
 
 
