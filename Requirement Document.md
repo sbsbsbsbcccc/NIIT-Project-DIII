@@ -2,7 +2,8 @@
 
 + 能抄即抄 ,节省时间 . 
 + 每位成员进行自己的部分时 , 需将**自己部分的工作流程 , 难点**另记录在个人文档中 , 方便后面整合 , 制作PPT和SRS . 
-+ 不懂如何具体实现时ChatGPT是很好的辅助 . 
++ 不懂如何具体实现时ChatGPT是很好的辅助 .
++ https://pan.baidu.com/s/1Ik5Hz6dNEaD9aVYZnBCvSA 提取码：mfns Ubuntu22.04虚拟机 安装了大数据相关组件 
 
 
 ### Task1 - Big Data Processing - Willson 余
