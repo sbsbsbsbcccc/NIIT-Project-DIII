@@ -20,6 +20,7 @@
 
 #### Requirement
 
++ 数据集选择
 + 使用Mysql的数据集和Spark进行机器学习相关分析 . 
 
 
