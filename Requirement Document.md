@@ -9,41 +9,38 @@
 
 #### Requirement
 
-+ 数据集 / 爬取数据(暂定)
-+ 将Task1所收集到的文件用Flume从Windows系统上转移到HDFS . 
++ 数据集 - 银行流失账户数据分析 数据集来源 : https://www.kaggle.com/competitions/playground-series-s4e1/data 参考分析结果 : https://www.kaggle.com/code/abdmental01/bank-churn-lightgbm-and-catboost-0-8945#8.-Lets-Visualize-the-data
++ 用Flume从Windows系统上转移到HDFS . 
 + 用Hive生成表格 , 加载HDFS上的文件并进行Mapreduce工作 . 
 + 将Hive上的数据用Sqoop转移到同机Mysql . 
 
 
-### Task2 - Machine Learning Combinined with Mapreduce
+### Task2 - Machine Learning Combinined with Mapreduce - Henry 马
 
 #### Requirement
 
-+ (暂定)
++ 使用Mysql的数据集和Spark进行机器学习相关分析 . 
 
 
-
-### Task3 - Front End Basic Data Presentation - Henry 马
+### Task3 - Front End Basic Data Presentation - Michelanglo 廖
 
 #### Requirement
 
-+ 从**Linux虚拟机的Mysql**上提取分析后的数据到网页前端 . 
-+ 将Mysql的数据用Echart图表示 . 
-+ 接入大语言模型接口(ChatGPT, Huggingface上开源模型等) , 输入Mysql数据 , 分析原因(如什么地区访问量最高的原因) , 呈现在网页上 . 
-
++ 连接MySQL数据库 . 
++ 用Echart图分析MySQL里的数据 .
 
 
 ### Task4 - Front End Optimization - Frank 姜
 
 #### Requirement
 
++ 设计网页的框架(包括网页美化)
 + 完成注册登录找回密码等基本功能(直接抄GITHUB) , 注意该功能需使用到Linux虚拟机上的Mysql数据库 . 
 + 融合Task3完成的所有代码 . 
 + 在网页上提供一键按钮 , 并在运行成功后给予反馈 . 
   + 一键获取数据 , 应该最后会是一键运行本机Python文件(先用Hello Word测试 , 之后添加参数`Size` , 用户在网页上输入以确定获取数据的数量 , 相当于c语言的args) .  
-  + 一键执行多条Linux Shell命令 , 调用脚本(如start-all.sh就是执行多条命令) . 
-+ 网页美化(直接抄GITHUB) . 
-
+  + 一键执行多条Linux Shell命令 , 调用脚本(如start-all.sh就是执行多条命令) .
++ 在网页上插入ChatGPT插件 . 
 
 
 ### Task5 - PPT And SRS - Dream 赵
