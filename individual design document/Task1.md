@@ -330,10 +330,7 @@ Use `mysql -u root -p` and input password`123456` to enter mysql interface.
 ### Start Spark
 
 ```
-cd $SPARK_HOME/sbin
+ ~/training/spark-2.3.0/sbin/start-all.sh
 ```
 
-```
-./start-all.sh
-```
 
