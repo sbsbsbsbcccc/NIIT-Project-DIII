@@ -333,4 +333,7 @@ Use `mysql -u root -p` and input password`123456` to enter mysql interface.
  ~/training/spark-2.3.0/sbin/start-all.sh
 ```
 
+### Disk space is not enough for spark work
++ `sudo apt install gparted` then in ubuntu desktop command shell `sudo gparted`
++ See this link https://blog.csdn.net/ningmengzhihe/article/details/127295333
 
