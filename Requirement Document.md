@@ -10,9 +10,9 @@
 
 #### Requirement
 
-+ 输入端 : 数据集 - 银行流失账户数据分析 数据集来源 : https://www.kaggle.com/competitions/playground-series-s4e1/data 参考分析结果 : https://www.kaggle.com/code/abdmental01/bank-churn-lightgbm-and-catboost-0-8945#8.-Lets-Visualize-the-data
++ 输入端 : 数据集 - 银行流失账户数据分析 数据集来源 : https://www.kaggle.com/competitions/playground-series-s4e1/data 参考分析 : https://www.kaggle.com/code/abdmental01/bank-churn-lightgbm-and-catboost-0-8945#8.-Lets-Visualize-the-data
 + 用Flume从Windows系统上转移到HDFS . 
-+ 用Hive生成表格 , 加载HDFS上的文件并进行简单的Mapreduce工作(8.1-8.7 ) . 
++ 用Hive生成表格 , 加载HDFS上的文件并进行简单的Mapreduce工作(参考分析8.1-8.7) . 
 + 将Hive上的数据用Sqoop转移到同机Mysql .
 + 编写脚本 , 运行shell命令 .
 + 输出端 : MySQL数据 SHELL脚本
@@ -33,8 +33,7 @@
 #### Requirement
 
 + 输入端 : MySQL数据 HDFS数据
-+ 进行8.8+MapReduce工作 . 
-+ 连接MySQL数据库 . 
++ 用Hive进行MapReduce工作并用Sqoop传入MySQL(参考分析8.8-8.12) . 
 + 使用Python分析MySQL里的数据 .
 + 输出端 : MySQL数据 分析结果图片(保存在Windows上)
 
