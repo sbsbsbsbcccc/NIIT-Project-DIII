@@ -1,4 +1,4 @@
-### 1. Choose proper dataset
+### Choose proper dataset
 
 + greater than 10000 rows.
 + few odd data.
@@ -6,7 +6,7 @@
 
 
 
-### 2. Install Ubuntu 22.04 system and configure static IP
+### Install Ubuntu 22.04 system and configure static IP
 
 + installation of ubuntu22.04 on VMware.
 + set VMnet8 related configuration on windows control panel.
@@ -33,7 +33,7 @@ For more details, see https://blog.csdn.net/m0_54219225/article/details/12717041
 
 
 
-### 3. Install Big Data related techonology
+### Install Big Data related techonology
 
 + Java
 + Hadoop pesuodo mode
@@ -333,7 +333,8 @@ Use `mysql -u root -p` and input password`123456` to enter mysql interface.
  ~/training/spark-2.3.0/sbin/start-all.sh
 ```
 
-### Disk space is not enough for spark work
+### Disk space is not enough
 + `sudo apt install gparted` then in ubuntu desktop command shell `sudo gparted`
 + See this link https://blog.csdn.net/ningmengzhihe/article/details/127295333
 
+### Shell script
