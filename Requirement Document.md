@@ -24,8 +24,13 @@
 
 + 输入端 : 数据集
 + 数据集选择 . 
-+ 使用HDFS上的数据集和Spark进行机器学习相关分析 . 
-+ 输出端 : (暂时)Windows/Linux上的csv文件 . 
++ 使用HDFS上的数据集和Spark进行机器学习相关分析 .
+  + 数据预处理 & 特征工程
+  + 使用GBT建模
+  + 可视化在测试集上的表现(ROC Curve)
++ 输出端 :
+  + 训练好的模型保存至HDFS
+  + 读取保存的训练后模型，使用新的数据进行预测，结果保存至(暂时)Windows/Linux上的csv文件 . 
 
 
 ### Task3 - Front End Basic Data Presentation - Michelanglo 廖
