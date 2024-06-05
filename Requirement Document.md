@@ -18,7 +18,17 @@
 + 输出端 : MySQL数据 SHELL脚本
 
 
-### Task2 - Machine Learning Combinined with Mapreduce - Henry 马
+### Task2 - Front End Basic Data Presentation - Michelanglo 廖
+
+#### Requirement
+
++ 输入端 : MySQL数据 HDFS数据
++ 用Hive进行MapReduce工作并用Sqoop传入MySQL(参考分析8.8-8.12) . 
++ 使用Python分析MySQL里的数据 .
++ 输出端 : MySQL数据 分析结果图片(保存在Windows上)
+
+
+### Task3 - Machine Learning Combinined with Mapreduce - Henry 马
 
 #### Requirement
 
@@ -32,16 +42,6 @@
 + 输出端 :
   + 训练好的模型保存至HDFS
   + 读取保存的训练后模型，使用新的数据进行预测，结果保存至(暂时)Windows/Linux上的csv文件 . 
-
-
-### Task3 - Front End Basic Data Presentation - Michelanglo 廖
-
-#### Requirement
-
-+ 输入端 : MySQL数据 HDFS数据
-+ 用Hive进行MapReduce工作并用Sqoop传入MySQL(参考分析8.8-8.12) . 
-+ 使用Python分析MySQL里的数据 .
-+ 输出端 : MySQL数据 分析结果图片(保存在Windows上)
 
 
 ### Task4 - Front End Optimization - Frank 姜
