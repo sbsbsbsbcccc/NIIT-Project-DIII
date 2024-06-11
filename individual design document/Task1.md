@@ -2,16 +2,22 @@
 
 + greater than 10000 rows.
 + few odd data.
-+ good for analysis.
++ analysis convenience.
 
 
 
 ### Install Ubuntu 22.04 system and configure static IP
 
 + installation of ubuntu22.04 on VMware.
-+ set VMnet8 related configuration on windows control panel.
-+ set NAT mode on VMware virtual network editor and set some configurations like ip, gateway, don't use DHCP services .etc.
-+ create a file in `/etc/netplan/` and do some changes, then run `sudo netplan apply` command.
+
++ for remote connection
+
+  + set VMnet8 related configuration on windows control panel.
+
+  + set NAT mode on VMware virtual network editor and set some configurations like ip, gateway, don't use DHCP services .etc.
+  + for more details, see https://blog.csdn.net/m0_54219225/article/details/127170419
+
+  + create a file in `/etc/netplan/` and do some changes, then run `sudo netplan apply` command.
 
 
 
@@ -26,10 +32,6 @@ Note :
 `port` : `22`
 
 
-
-You need to change three places to connect to internet : inside of ubuntu(already done), windows control panel vmnet8 settings, and vmware virtual network editor. 
-
-For more details, see https://blog.csdn.net/m0_54219225/article/details/127170419
 
 
 
@@ -56,37 +58,83 @@ No duplicate rows.
 Delete the first row.
 
 ```
-sed '1d' train.csv > newtrain.csv
+sed '1d' ~/dataset/train.csv > ~/dataset/train/newtrain.csv
 ```
+
 
 
 ### Use Flume to upload data from linux to hdfs
 
++ Use commands: 
+  + Note : flume must be closed totally, or you may fail because of file R/W reasons.
+
 ```
-flume-ng agent -n agent1 -f $FLUME_HOME/conf/spool_test.conf
+flume-ng agent -n agent1 -f $FLUME_HOME/conf/spool_train.conf
 ```
 
 ```
-flume-ng agent -n agent2 -f $FLUME_HOME/conf/spool_train.conf
+flume-ng agent -n agent2 -f $FLUME_HOME/conf/spool_test.conf
+```
+
+
+
++ Contents
+
+```
+agent1.sources = source1
+agent1.channels = channel1
+agent1.sinks = sink1
+
+agent1.sources.source1.type = spooldir
+agent1.sources.source1.spoolDir = /home/willson/training/dataset/train
+
+agent1.channels.channel1.type = memory
+agent1.channels.channel1.capacity = 1000
+agent1.channels.channel1.transactionCapacity = 1000
+
+agent1.sinks.sink1.type = hdfs
+agent1.sinks.sink1.hdfs.path = /dataset/train
+agent1.sinks.sink1.hdfs.rollCount = 10000
+agent1.sinks.sink1.hdfs.rollSize = 1073741824
+agent1.sinks.sink1.hdfs.rollInterval = 3600
+agent1.sinks.sink1.hdfs.fileType = DataStream
+agent1.sinks.sink1.hdfs.filePrefix = train
+
+agent1.sources.source1.channels = channel1
+agent1.sinks.sink1.channel = channel1
+```
+
+
+
+```
+agent2.sources = source2
+agent2.channels = channel2
+agent2.sinks = sink2
+
+agent2.sources.source2.type = spooldir
+agent2.sources.source2.spoolDir = /home/willson/training/dataset/test
+
+agent2.channels.channel2.type = memory
+agent2.channels.channel2.capacity = 1000
+agent2.channels.channel2.transactionCapacity = 1000
+
+agent2.sinks.sink2.type = hdfs
+agent2.sinks.sink2.hdfs.path = /dataset/test
+agent2.sinks.sink2.hdfs.rollCount = 10000
+agent2.sinks.sink2.hdfs.rollSize = 1073741824
+agent2.sinks.sink2.hdfs.rollInterval = 3600
+agent2.sinks.sink2.hdfs.fileType = DataStream
+agent2.sinks.sink2.hdfs.filePrefix = test
+
+agent2.sources.source2.channels = channel2
+agent2.sinks.sink2.channel = channel2
 ```
 
 
 
 ### Insert Data to Hive
 
-Note: When failed using hive, try this:
-
-```
-rm -rf $HIVE_HOME/metastore_db/
-```
-
-```
-schematool -initSchema -dbType mysql
-```
-
-
-
-Enter hive:
++ Enter hive:
 
 ```
 Create DATABASE IF NOT EXISTS analysis;
@@ -96,10 +144,17 @@ Create DATABASE IF NOT EXISTS analysis;
 USE analysis;
 ```
 
-Create an table and ignore the first row(title of each column). Cannot use external table for sqoop exporting problems.
++ Drop table if it exists.
+
+```
+DROP TABLE IF EXISTS train_tmp;
+```
+
++ Create an tmp table(sqoop exporting problems).
+  + When load data from hdfs, it will extract all files whether you ignore first line. So you must create a tmp table then transfer data to new table.
 
 ```sql
-CREATE TABLE IF NOT EXISTS train (
+CREATE TABLE IF NOT EXISTS train_tmp (
     Id STRING,
     CustomerId STRING,
     Surname STRING,
@@ -117,11 +172,30 @@ CREATE TABLE IF NOT EXISTS train (
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-STORED AS TEXTFILE;
+STORED AS TEXTFILE
+TBLPROPERTIES ('skip.header.line.count'='1');
 ```
 
 ```
-LOAD DATA INPATH '/dataset/train' INTO TABLE analysis.train;
+LOAD DATA INPATH '/dataset/train' INTO TABLE analysis.train_tmp;
+```
+
+```
+DROP TABLE IF EXISTS train;
+```
+
+```
+CREATE TABLE IF NOT EXISTS train
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+AS
+SELECT *
+FROM (
+  SELECT *, ROW_NUMBER() OVER () AS rn
+  FROM train_tmp
+) tmp
+WHERE rn > 1;
 ```
 
 
@@ -132,9 +206,7 @@ LOAD DATA INPATH '/dataset/train' INTO TABLE analysis.train;
 
 ### Mapreduce using hive
 
-#### WordCount
-
-##### Gender analysis
+#### Gender analysis
 
 ```
 CREATE TABLE train_gender (
@@ -154,7 +226,7 @@ GROUP BY Gender;
 
 
 
-##### Geography analysis
+#### Geography analysis
 
 ```
 CREATE TABLE train_geography (
@@ -174,7 +246,7 @@ GROUP BY Geography;
 
 
 
-##### Tenure analysis
+#### Tenure analysis
 
 ```
 CREATE TABLE train_tenure (
@@ -194,7 +266,7 @@ GROUP BY Tenure;
 
 
 
-##### NumOfProducts analysis
+#### NumOfProducts analysis
 
 ```
 CREATE TABLE train_numofproducts (
@@ -214,7 +286,7 @@ GROUP BY NumOfProducts;
 
 
 
-##### HasCrCard analysis
+#### HasCrCard analysis
 
 ```
 CREATE TABLE train_hascrcard (
@@ -234,7 +306,7 @@ GROUP BY HasCrCard;
 
 
 
-##### IsActiveMember analysis
+#### IsActiveMember analysis
 
 ```
 CREATE TABLE train_isactivemember (
@@ -254,7 +326,7 @@ GROUP BY IsActiveMember;
 
 
 
-##### Exited analysis
+#### Exited analysis
 
 ```
 CREATE TABLE train_exited (
@@ -280,10 +352,6 @@ Note:
 
 + When use INT datatype in hive, it will be float type.
 + Need to change the default delimeter of hive.
-
-
-
-
 
 ```
 sqoop export --connect jdbc:mysql://localhost/analysis --username root --password 123456 --table train --export-dir /user/hive/warehouse/analysis.db/train --input-fields-terminated-by ','
@@ -325,23 +393,36 @@ Use `mysql -u root -p` and input password`123456` to enter mysql interface.
 
 
 
-### Start Spark
-
-```
- ~/training/spark-2.3.0/sbin/start-all.sh
-```
-
 ### Disk space is not enough
-+ `sudo apt install gparted` then in ubuntu desktop command shell `sudo gparted`
-+ See this link https://blog.csdn.net/ningmengzhihe/article/details/127295333
+
++ `sudo apt install gparted` then in ubuntu desktop command shell `sudo gparted`.
++ See this link https://blog.csdn.net/ningmengzhihe/article/details/127295333 for more details.
+
+
 
 ### Shell script
+
+#### How to use shell
+
++ vi filename.
+
 ```
 #!/usr/bin/bash
 commands
 ...
 ```
 
++ change permissions.
+
 ```
 chmod +x filename
 ```
+
+
+
+#### How to add hive command
+
+```
+hive -e "command; command;"
+```
+
