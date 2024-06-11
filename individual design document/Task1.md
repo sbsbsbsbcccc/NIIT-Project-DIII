@@ -336,3 +336,12 @@ Use `mysql -u root -p` and input password`123456` to enter mysql interface.
 + See this link https://blog.csdn.net/ningmengzhihe/article/details/127295333
 
 ### Shell script
+```
+#!/usr/bin/bash
+commands
+...
+```
+
+```
+chmod +x filename
+```
