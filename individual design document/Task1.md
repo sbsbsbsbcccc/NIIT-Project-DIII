@@ -46,17 +46,6 @@ For more details, see https://blog.csdn.net/m0_54219225/article/details/12717041
 
 
 
-### Use Flume to upload data from windows to hdfs
-
-to `/dataset/train` and `/dataset/test`
-
-Simple way : 
-
-```
-hdfs dfs -put ... /dataset/...
-```
-
-
 
 ### Clean data
 
@@ -71,6 +60,15 @@ sed '1d' train.csv > newtrain.csv
 ```
 
 
+### Use Flume to upload data from linux to hdfs
+
+```
+flume-ng agent -n agent1 -f $FLUME_HOME/conf/spool_test.conf
+```
+
+```
+flume-ng agent -n agent1 -f $FLUME_HOME/conf/spool_train.conf
+```
 
 
 
