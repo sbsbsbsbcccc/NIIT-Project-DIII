@@ -67,7 +67,7 @@ flume-ng agent -n agent1 -f $FLUME_HOME/conf/spool_test.conf
 ```
 
 ```
-flume-ng agent -n agent1 -f $FLUME_HOME/conf/spool_train.conf
+flume-ng agent -n agent2 -f $FLUME_HOME/conf/spool_train.conf
 ```
 
 
