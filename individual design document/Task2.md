@@ -6,15 +6,16 @@
 -- 创建新表 train_creditscore，使用 INT 类型
 CREATE TABLE train_creditscore (
     CreditScore INT,
-);
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
 ```
 
 ```hive
 -- 从母表 train 中插入数据到新表 train_hascrcard
-INSERT INTO TABLE train_hascrcard
-SELECT HasCrCard, COUNT(*) AS count
-FROM train
-GROUP BY HasCrCard;
+INSERT INTO TABLE train_creditscore
+SELECT Creditscore
+FROM train;
 ```
 
 ##### Age analysis
