@@ -62,6 +62,12 @@ pip install -U Pillow
 pip install scikit-learn
 ```
 
++ 安装pyspark
+
+```
+pip install pyspark
+```
+
 ### Step2:上传文件到hdfs，先采用hdfs dfs -put方式，后续可能使用flume
 
 ```
