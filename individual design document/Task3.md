@@ -2,7 +2,7 @@
 
 + 添加 deadsnakes PPA 存储库 deadsnakes PPA 存储库包含多个 Python 版本
 
-````
+```
 sudo add-apt-repository ppa:deadsnakes/ppa
 ```
 
