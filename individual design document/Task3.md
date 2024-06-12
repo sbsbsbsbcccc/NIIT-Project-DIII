@@ -81,7 +81,7 @@ hdfs dfs -mkdir /model/plots
 ```
 
 ```
-cd ~/training
+cd ~/training/dataset
 ```
 
 ```
