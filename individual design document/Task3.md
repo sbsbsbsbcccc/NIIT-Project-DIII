@@ -106,6 +106,10 @@ hdfs dfs -put test.csv /model/dataset/test.csv
 
 ### Step5：运行GBDT.py
 
+```
+cd ~/training/shell/spark
+```
+
 + 此步骤使用train.csv数据集，训练集和测试集8：2，训练的模型保存在hdfs:///model/gbdt_model
 
 ```
