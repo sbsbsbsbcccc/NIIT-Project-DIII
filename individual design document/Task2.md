@@ -5,16 +5,24 @@
 ```hive
 -- 创建新表 train_creditscore，使用 INT 类型
 CREATE TABLE train_creditscore (
-    CreditScore INT,
-)
+    CreditScore INT
+);
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
+```
+
+```sql
+use analysis;
+
+CREATE TABLE train_creditscore (
+    CreditScore INT
+);
 ```
 
 ```hive
 -- 从母表 train 中插入数据到新表 train_hascrcard
 INSERT INTO TABLE train_creditscore
-SELECT Creditscore
+SELECT CreditScore
 FROM train;
 ```
 
@@ -23,16 +31,24 @@ FROM train;
 ```hive
 -- 创建新表 train_age，使用 INT 类型
 CREATE TABLE train_age (
-    age INT
+    Age INT
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 ```
 
+```sql
+use analysis;
+
+CREATE TABLE train_age (
+    Age INT
+);
+```
+
 ```hive
 -- 从母表 train 中插入数据到新表 train_age
 INSERT INTO TABLE train_age
-SELECT age
+SELECT Age
 FROM train;
 ```
 
@@ -48,29 +64,39 @@ FIELDS TERMINATED BY ',';
 ```
 
 ```hive
+CREATE TABLE train_balance (
+    Balance FLOAT
+);
+```
+
+```hive
 -- 从母表 train 中插入数据到新表 train_balance
 INSERT INTO TABLE train_balance
 SELECT CAST(Balance AS FLOAT) AS Balance
 FROM train;
 ```
 
-##### estimatedsalary analysis
+##### Estimatedsalary analysis
 
 ```hive
 -- 创建新表 train_estimatedsalary，使用 FLOAT 类型
-CREATE TABLE estimatedsalary (
-    Salary FLOAT
+CREATE TABLE train_estimatedsalary (
+    Estimatedsalary FLOAT
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 ```
 
+```sql
+CREATE TABLE train_estimatedsalary (
+    Estimatedsalary FLOAT
+);
+```
+
 ```hive
--- 插入数据到 train_estimatedsalary 表
--- 假设数据来源于某个表，例如 source_table，且包含一个 Salary 列
 INSERT INTO TABLE train_estimatedsalary
-SELECT CAST(Salary AS FLOAT) AS Salary
-FROM source_table;
+SELECT CAST(Estimatedsalary AS FLOAT) AS Salary
+FROM train;
 ```
 
 #### Export To MySQL
@@ -117,8 +143,8 @@ sqoop export \
   --connect jdbc:mysql://localhost/analysis \
   --username root \
   --password 123456 \
-  --table estimatedsalary \
-  --export-dir /user/hive/warehouse/analysis.db/estimatedsalary \
+  --table train_estimatedsalary \
+  --export-dir /user/hive/warehouse/analysis.db/train_estimatedsalary \
   --input-fields-terminated-by ','
 ```
 
@@ -196,16 +222,13 @@ for i, v in enumerate(values):
     plt.text(i, v + 2100, str(v), ha='center', va='bottom')
     
 # Saving the plot to a specified directory
-save_path = os.path.join(save_dir, 'df1.png')
+save_path = os.path.join(save_dir, 'train_exited.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-<img src="D:\ProgramDVI\df1.png" alt="df1" style="zoom:72%;" />
 
 ##### Generate a bar chart for train_gender
 
@@ -235,16 +258,13 @@ for i, v in enumerate(values):
     plt.text(i , v + 1000, str(v), ha='center', va='bottom')
 
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df2.png')
+save_path = os.path.join(save_dir, 'train_gender.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df2](D:\ProgramDVI\df2.png)
 
 ##### Generate a bar chart for train_geography
 
@@ -274,16 +294,13 @@ for i, v in enumerate(values):
     plt.text(i, v + 1500, str(v), ha='center', va='bottom')
     
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df3.png')
+save_path = os.path.join(save_dir, 'train_geography.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df3](D:\ProgramDVI\df3.png)
 
 ##### Generate a bar chart for train_hascrcard
 
@@ -316,16 +333,13 @@ for i, v in enumerate(values):
     plt.text(i, v + 2000, str(v), ha='center', va='bottom')
     
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df4.png')
+save_path = os.path.join(save_dir, 'train_hascrcard.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df4](D:\ProgramDVI\df4.png)
 
 ##### Generate a bar chart for train_isactivemember
 
@@ -358,16 +372,13 @@ for i, v in enumerate(values):
     plt.text(i, v + 1000, str(v), ha='center', va='bottom')
     
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df5.png')
+save_path = os.path.join(save_dir, 'train_isactivemember.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df5](D:\ProgramDVI\df5.png)
 
 ##### Generate a bar chart for train_numofproducts
 
@@ -397,16 +408,13 @@ for i, v in enumerate(values):
     plt.text(i, v + 1000, str(v), ha='center', va='bottom')
     
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df6.png')
+save_path = os.path.join(save_dir, 'train_numofproducts.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df6](D:\ProgramDVI\df6.png)
 
 ##### Generate a bar chart for train_tenure
 
@@ -437,16 +445,13 @@ for i, v in enumerate(values):
     plt.text(i, v , str(v), ha='center', va='bottom')
     
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df7.png')
+save_path = os.path.join(save_dir, 'train_tenure.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df6](D:\ProgramDVI\df6.png)
 
 ##### Generate a pie chart for train_exited
 
@@ -477,16 +482,13 @@ for i, (label, value) in enumerate(zip(labels, values)):
 plt.title('Customer Churn Analysis')
 
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df1(1).png')
+save_path = os.path.join(save_dir, 'train_exited(1).png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df1(1)](D:\ProgramDVI\df1(1).png)
 
 ##### Generate a pie chart for train_gender
 
@@ -514,16 +516,13 @@ for i, (label, value) in enumerate(zip(labels, values)):
 plt.title('Customer Gender Analysis')
 
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df2(1).png')
+save_path = os.path.join(save_dir, 'train_gender(1).png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df2(1)](D:\ProgramDVI\df2(1).png)
 
 ##### Generate a pie chart for train_geography
 
@@ -544,16 +543,13 @@ for i, (label, value) in enumerate(zip(labels, values)):
 
 plt.title('Customer Geography Analysis')
 
-save_path = os.path.join(save_dir, 'df3(1).png')
+save_path = os.path.join(save_dir, 'train_geography(1).png')
 
 plt.savefig(save_path, transparent=True)
 
 plt.show()
 ```
 
-##### Output:
-
-![df3(1)](D:\ProgramDVI\df3(1).png)
 
 ##### Generate a pie chartfor train_hasCrcard:
 
@@ -580,16 +576,13 @@ for i, (label, value) in enumerate(zip(labels, values)):
 plt.title('Customer Credit Card Analysis')
 
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df4(1).png')
+save_path = os.path.join(save_dir, 'train_hasCrcard(1).png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df4(1)](D:\ProgramDVI\df4(1).png)
 
 ##### Generate a pie chartfor train_isactivemember:
 
@@ -620,16 +613,13 @@ for i, (label, value) in enumerate(zip(labels, values)):
 plt.title('Customer Active Membership Analysis')
 
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df5(1).png')
+save_path = os.path.join(save_dir, 'train_isactivemember(1).png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df5(1)](D:\ProgramDVI\df5(1).png)
 
 ##### Generate a pie chartfor train_numofproducts:
 
@@ -650,7 +640,7 @@ for i, (label, value) in enumerate(zip(labels, values)):
 
 plt.title('Customer Product Analysis')
 
-save_path = os.path.join(save_dir, 'df6(1).png')
+save_path = os.path.join(save_dir, 'train_numofproducts(1).png')
 
 plt.savefig(save_path, transparent=True)
 
@@ -668,7 +658,7 @@ query = "SELECT Tenure, count FROM train_tenure"
 df7 = pd.read_sql(query, connection)
 
 #palette = sns.color_palette("Set2", 2)
-palette = sns.color_palette("Accent", len(labels))
+palette = sns.color_palette("Accent", 11)
 #import matplotlib.cm as cm  
 #colors = cm.get_cmap('viridis', len(labels))(range(len(labels)))  
 
@@ -683,16 +673,13 @@ for i, (label, value) in enumerate(zip(labels, values)):
 
 plt.title('Customer Tenure Analysis')
 
-save_path = os.path.join(save_dir, 'df7(1).png')
+save_path = os.path.join(save_dir, 'train_tenure(1).png')
 
 plt.savefig(save_path, transparent=True)
 
 plt.show()
 ```
 
-##### Output:
-
-![df7(1)](D:\ProgramDVI\df7(1).png)
 
 ##### Generate a histogram displaying the frequency distribution of "CreditScore", including a kernel density estimation curve. The chart also includes dashed lines representing the mean and median values, with these statistical values displayed in the legend
 
@@ -727,151 +714,114 @@ plt.ylabel("Count")
 plt.legend()
 
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df8.png')
+save_path = os.path.join(save_dir, 'train_creditscore.png')
 plt.savefig(save_path, transparent=True)
 
 # Displaying the plot
 plt.show()
 ```
 
-##### Output:
-
-![df8](D:\ProgramDVI\df8.png)
 
 ##### generates a histogram displaying the frequency distribution of ages in the "train_age" dataset. It includes a kernel density estimation curve, along with dashed lines representing the mean and median age values. These statistical values are also displayed in the legend
 
 ```python
-# Executing SQL query to fetch data
-query = "SELECT age FROM train_age"
+query = "SELECT Age FROM train_age"
 df9 = pd.read_sql(query, connection)
 
-# Creating a figure for plotting
 plt.figure(figsize=(10, 6))
+histplot = sns.histplot(data=df9, x="Age", bins=20, color='#26090b', edgecolor='#26090b', kde=True)
 
-# Creating a histogram plot
-histplot = sns.histplot(data=df9, x="age", bins=20, color='#26090b', edgecolor='#26090b', kde=True)
-
-# Setting color for the kernel density line
 histplot.get_lines()[0].set_color('#26090b')
 
-# Calculating mean and median values
-mean_value = df9["age"].mean()
-median_value = df9["age"].median()
+mean_value = df9["Age"].mean()
+median_value = df9["Age"].median()
 
-# Adding vertical lines for mean and median
 plt.axvline(mean_value, color='red', linestyle='dashed', linewidth=2, label=f'Mean: {mean_value:.2f}')
 plt.axvline(median_value, color='blue', linestyle='dashed', linewidth=2, label=f'Median: {median_value:.2f}')
 
-# Adding title and labels to the plot
 plt.title("Distribution of Age in train_age with Mean and Median")
 plt.xlabel("Age")
 plt.ylabel("Count")
 
-# Adding legend to the plot
 plt.legend()
 
-# Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df9.png')
+save_path = os.path.join(save_dir, 'train_age.png')
+
 plt.savefig(save_path, transparent=True)
 
-# Displaying the plot
 plt.show()
+
 ```
 
-##### Output:
-
-![df9](D:\ProgramDVI\df9.png)
 
 ##### generates a histogram that illustrates the distribution of ages within the "train_age" dataset. Additionally, it includes a kernel density estimation (KDE) curve. The dashed red line represents the mean age, while the dashed blue line represents the median age. These statistical values are also shown in the legend
 
 ```python
-# Executing SQL query to fetch data
-query = "SELECT balance FROM train_balance"
+query = "SELECT Balance FROM train_balance"
 df10 = pd.read_sql(query, connection)
 
-# Creating a figure for plotting
 fig = plt.figure(figsize=(10, 6))
 
-# Creating a histogram plot
-histplot = sns.histplot(data=df10, x="balance", bins=20, color='#26090b', edgecolor='#26090b', kde=True)
+histplot = sns.histplot(data=df10, x="Balance", bins=20, color='#26090b', edgecolor='#26090b', kde=True)
 
-# Checking if there is a kernel density line
 if len(histplot.get_lines()) > 0:
     histplot.get_lines()[0].set_color('#26090b')
 
-# Calculating mean and median values
-mean_value = df10["balance"].mean()
-median_value = df10["balance"].median()
+mean_value = df10["Balance"].mean()
+median_value = df10["Balance"].median()
 
-# Adding vertical lines for mean and median
 plt.axvline(mean_value, color='red', linestyle='dashed', linewidth=2, label=f'Mean: {mean_value:.2f}')
 plt.axvline(median_value, color='blue', linestyle='dashed', linewidth=2, label=f'Median: {median_value:.2f}')
 
-# Adding title and labels to the plot
 plt.title("Distribution of Balance in train with Mean and Median")
 plt.xlabel("Balance")
 plt.ylabel("Count")
 
-# Adding legend to the plot
 plt.legend()
 
-# Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df10.png')
+save_path = os.path.join(save_dir, 'train_balance.png')
+
 plt.savefig(save_path, transparent=True)
 
-# Displaying the plot
 plt.show()
+
 ```
 
-##### Output:
-
-![df10](D:\ProgramDVI\df10.png)
 
 ##### generates a histogram illustrating the distribution of estimated salaries within the "train_estimatedsalary" dataset. It includes a kernel density estimation (KDE) curve. The dashed red line represents the mean estimated salary, while the dashed blue line represents the median estimated salary. These statistical values are also shown in the legend
 
 ```python
-# Executing SQL query to fetch data
-query = "SELECT estimatedsalary FROM train_estimatedsalary"
+query = "SELECT Estimatedsalary FROM train_estimatedsalary"
 df11 = pd.read_sql(query, connection)
 
-# Creating a figure for plotting
 fig = plt.figure(figsize=(10, 6))
 
-# Creating a histogram plot
-histplot = sns.histplot(data=df11, x="estimatedsalary", bins=20, color='#26090b', edgecolor='#26090b', kde=True)
+histplot = sns.histplot(data=df11, x="Estimatedsalary", bins=20, color='#26090b', edgecolor='#26090b', kde=True)
 
-# Checking if there is a kernel density line
 if len(histplot.get_lines()) > 0:
     histplot.get_lines()[0].set_color('#26090b')
 
-# Calculating mean and median values
-mean_value = df11["estimatedsalary"].mean()
-median_value = df11["estimatedsalary"].median()
+mean_value = df11["Estimatedsalary"].mean()
+median_value = df11["Estimatedsalary"].median()
 
-# Adding vertical lines for mean and median
 plt.axvline(mean_value, color='red', linestyle='dashed', linewidth=2, label=f'Mean: {mean_value:.2f}')
 plt.axvline(median_value, color='blue', linestyle='dashed', linewidth=2, label=f'Median: {median_value:.2f}')
 
-# Adding title and labels to the plot
 plt.title("Distribution of EstimatedSalary in df11 with Mean and Median")
 plt.xlabel("EstimatedSalary")
 plt.ylabel("Count")
 
-# Adding legend to the plot
 plt.legend()
 
-# Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df11.png')
+save_path = os.path.join(save_dir, 'train_estimatedsalary.png')
+
 plt.savefig(save_path, transparent=True)
 
-# Displaying the plot
 plt.show()
 
 ```
 
-##### Output:
 
-![df11](D:\ProgramDVI\df11.png)
 
 ##### generates a chart with multiple subplots, each displaying a count plot of different categorical variables colored based on the target variable "Exited". Each row of the chart contains two subplots, and if the number of categorical variables is not even, the last row will have only one subplot. The title of each subplot shows the corresponding categorical variable's name and indicates the coloring based on the target variable
 
@@ -908,7 +858,7 @@ for i, col in enumerate(cat_cols):
 plt.tight_layout() 
 
 # Specifying the path to save the plot
-save_path = os.path.join(save_dir, 'df.png')
+save_path = os.path.join(save_dir, 'countplots.png')
 
 # Saving the plot
 plt.savefig(save_path, transparent=True)
@@ -916,7 +866,3 @@ plt.savefig(save_path, transparent=True)
 # Displaying the plot
 plt.show()
 ```
-
-##### Output:
-
-![df](D:\ProgramDVI\df.png)
