@@ -230,6 +230,7 @@ plt.show()
 ```
 
 
+
 ##### Generate a bar chart for train_gender
 
 ```python
@@ -266,6 +267,7 @@ plt.show()
 ```
 
 
+
 ##### Generate a bar chart for train_geography
 
 ```python
@@ -300,6 +302,7 @@ plt.savefig(save_path, transparent=True)
 # Displaying the plot
 plt.show()
 ```
+
 
 
 ##### Generate a bar chart for train_hascrcard
@@ -341,6 +344,7 @@ plt.show()
 ```
 
 
+
 ##### Generate a bar chart for train_isactivemember
 
 ```python
@@ -380,6 +384,7 @@ plt.show()
 ```
 
 
+
 ##### Generate a bar chart for train_numofproducts
 
 ```python
@@ -414,6 +419,7 @@ plt.savefig(save_path, transparent=True)
 # Displaying the plot
 plt.show()
 ```
+
 
 
 ##### Generate a bar chart for train_tenure
@@ -453,6 +459,7 @@ plt.show()
 ```
 
 
+
 ##### Generate a pie chart for train_exited
 
 ```python
@@ -490,6 +497,7 @@ plt.show()
 ```
 
 
+
 ##### Generate a pie chart for train_gender
 
 ```python
@@ -524,6 +532,7 @@ plt.show()
 ```
 
 
+
 ##### Generate a pie chart for train_geography
 
 ```python
@@ -549,6 +558,7 @@ plt.savefig(save_path, transparent=True)
 
 plt.show()
 ```
+
 
 
 ##### Generate a pie chartfor train_hasCrcard:
@@ -582,6 +592,7 @@ plt.savefig(save_path, transparent=True)
 # Displaying the plot
 plt.show()
 ```
+
 
 
 ##### Generate a pie chartfor train_isactivemember:
@@ -620,6 +631,9 @@ plt.savefig(save_path, transparent=True)
 plt.show()
 ```
 
+##### Output:
+
+![df5(1)](D:\ProgramDVI\df5(1).png)
 
 ##### Generate a pie chartfor train_numofproducts:
 
@@ -647,9 +661,7 @@ plt.savefig(save_path, transparent=True)
 plt.show()
 ```
 
-##### Output:
 
-![df6(1)](D:\ProgramDVI\df6(1).png)
 
 ##### Generate a pie chartfor train_tenure:
 
@@ -679,6 +691,7 @@ plt.savefig(save_path, transparent=True)
 
 plt.show()
 ```
+
 
 
 ##### Generate a histogram displaying the frequency distribution of "CreditScore", including a kernel density estimation curve. The chart also includes dashed lines representing the mean and median values, with these statistical values displayed in the legend
@@ -722,6 +735,7 @@ plt.show()
 ```
 
 
+
 ##### generates a histogram displaying the frequency distribution of ages in the "train_age" dataset. It includes a kernel density estimation curve, along with dashed lines representing the mean and median age values. These statistical values are also displayed in the legend
 
 ```python
@@ -752,6 +766,7 @@ plt.savefig(save_path, transparent=True)
 plt.show()
 
 ```
+
 
 
 ##### generates a histogram that illustrates the distribution of ages within the "train_age" dataset. Additionally, it includes a kernel density estimation (KDE) curve. The dashed red line represents the mean age, while the dashed blue line represents the median age. These statistical values are also shown in the legend
@@ -786,6 +801,7 @@ plt.savefig(save_path, transparent=True)
 plt.show()
 
 ```
+
 
 
 ##### generates a histogram illustrating the distribution of estimated salaries within the "train_estimatedsalary" dataset. It includes a kernel density estimation (KDE) curve. The dashed red line represents the mean estimated salary, while the dashed blue line represents the median estimated salary. These statistical values are also shown in the legend
@@ -866,3 +882,4 @@ plt.savefig(save_path, transparent=True)
 # Displaying the plot
 plt.show()
 ```
+
