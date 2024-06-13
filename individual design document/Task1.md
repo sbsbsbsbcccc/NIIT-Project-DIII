@@ -426,3 +426,81 @@ chmod +x filename
 hive -e "command; command;"
 ```
 
+```
+.
+├── flume
+│   ├── flume_upload_test.sh
+│   ├── flume_upload_train.sh
+│   └── kill_flume.sh
+├── hive
+│   ├── hive_train_age.sh
+│   ├── hive_train_balance.sh
+│   ├── hive_train_creditscore.sh
+│   ├── hive_train_estimatedsalary.sh
+│   ├── hive_train_exited.sh
+│   ├── hive_train_gender.sh
+│   ├── hive_train_geography.sh
+│   ├── hive_train_hascard.sh
+│   ├── hive_train_isactivemember.sh
+│   ├── hive_train_numofproducts.sh
+│   ├── hive_train.sh
+│   └── hive_train_tenure.sh
+├── mysql
+│   ├── analysis.sql
+│   ├── mysql_create_tables.sh
+│   └── mysql_drop_database.sh
+├── spark
+│   ├── evaluation_results.csv
+│   │   ├── part-00000-ef3af0e0-0507-48ea-af51-9c8b92dc948b-c000.csv
+│   │   ├── part-00007-ef3af0e0-0507-48ea-af51-9c8b92dc948b-c000.csv
+│   │   └── _SUCCESS
+│   ├── feature_importances.png
+│   ├── GBDT.py
+│   ├── merged_evaluation.csv
+│   ├── merged_predictions.csv
+│   ├── model_training.sh
+│   ├── prediction.py
+│   ├── predictions.csv
+│   │   ├── part-00000-3ff28b9c-6e35-4e95-b997-10456341104e-c000.csv
+│   │   ├── part-00001-3ff28b9c-6e35-4e95-b997-10456341104e-c000.csv
+│   │   └── _SUCCESS
+│   ├── predict.sh
+│   ├── roc_curve.png
+│   └── spark-warehouse
+├── spark-warehouse
+├── sqoop
+│   ├── sqoop_export_train_age.sh
+│   ├── sqoop_export_train_balance.sh
+│   ├── sqoop_export_train_creditscore.sh
+│   ├── sqoop_export_train_estimatedsalary.sh
+│   ├── sqoop_export_train_exited.sh
+│   ├── sqoop_export_train_gender.sh
+│   ├── sqoop_export_train_geography.sh
+│   ├── sqoop_export_train_hascrcard.sh
+│   ├── sqoop_export_train_isactivemember.sh
+│   ├── sqoop_export_train_numofproducts.sh
+│   ├── sqoop_export_train.sh
+│   └── sqoop_export_train_tenure.sh
+└── visual
+    ├── countplots.py
+    ├── exec_python.sh
+    ├── train_age.py
+    ├── train_balance.py
+    ├── train_creditscore.py
+    ├── train_estimatedsalary.py
+    ├── train_exited(1).py
+    ├── train_exited.py
+    ├── train_gender(1).py
+    ├── train_gender.py
+    ├── train_geography(1).py
+    ├── train_geography.py
+    ├── train_hascrcard(1).py
+    ├── train_hascrcard.py
+    ├── train_isactivemember(1).py
+    ├── train_isactivemember.py
+    ├── train_numofproducts(1).py
+    ├── train_numofproducts.py
+    ├── train_tenure(1).py
+    └── train_tenure.py
+```
+
