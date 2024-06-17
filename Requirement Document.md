@@ -9,23 +9,20 @@
 
 #### Requirement
 
++ 配置ubuntu虚拟机 , 包括安装大数据环境 , 配置静态网络 , 扩大内存和安装和配置一些常用的工具如vim fzf等 .
 + 输入端 : 数据集 - 银行流失账户数据分析 数据集来源 : https://www.kaggle.com/competitions/playground-series-s4e1/data 参考分析 : https://www.kaggle.com/code/abdmental01/bank-churn-lightgbm-and-catboost-0-8945#8.-Lets-Visualize-the-data
-+ 用Flume从Windows系统上转移到HDFS . 
-+ 用Hive生成表格 , 加载HDFS上的文件并进行简单的Mapreduce工作(参考分析8.1-8.7) . 
-+ 将Hive上的数据用Sqoop转移到同机Mysql .
-+ 编写脚本 , 运行shell命令 .
++ 用Flume从Linux系统上转移到HDFS . 
++ 用Hive生成表格 , 加载HDFS上的文件并进行部分的Mapreduce工作(参考分析8.1-8.7) . 
++ 编写mysql相关 , flume相关 , hive相关 , sqoop相关shell脚本 , 运行shell命令 .
 + 输出端 : MySQL数据 SHELL脚本
 
 
 ### Task2 - Front End Basic Data Presentation - Michelanglo 廖
 
 #### Requirement
-
-+ 输入端 : MySQL数据 HDFS数据
-+ 用Hive进行MapReduce工作并用Sqoop传入MySQL(参考分析8.8-8.12) . 
-+ 使用Python分析MySQL里的数据 .
-+ 输出端 : MySQL数据 分析结果图片(保存在Windows上)
-
++ 进行部分hive mapreduce工作 . 
++ 用sqoop将数据从hive传到mysql . 
++ 使用Python分析MySQL里的数据并可视化 , 分析结果图片保存到linux系统 .
 
 ### Task3 - Machine Learning using Spark - Henry Ma Yuchen
 
