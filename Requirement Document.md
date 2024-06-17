@@ -27,20 +27,20 @@
 + 输出端 : MySQL数据 分析结果图片(保存在Windows上)
 
 
-### Task3 - Machine Learning Combinined with Mapreduce - Henry 马
+### Task3 - Machine Learning using Spark - Henry Ma Yuchen
 
 #### Requirement
 
-+ 输入端 : 数据集
-+ 数据集选择 . 
-+ 使用HDFS上的数据集和Spark进行机器学习相关分析 .
-  + 数据预处理 & 特征工程
-  + 使用GBT建模
-  + 可视化在测试集上的表现(ROC Curve)
-  + 可视化特征重要性
-+ 输出端 :
-  + 训练好的模型保存至HDFS
-  + 读取保存的训练后模型，使用新的数据进行预测，结果保存至(暂时)Windows/Linux上的csv文件 . 
++ Dataset selection . 
++ Input : train.csv
++ Machine learning using Spark .
+  + Data Preprocessing & Feature Engineering
+  + Train GBT classification model
+  + Model evaluation (Accuracy, Precision, Recall, F1-score, ROC Curve, AUC)
+  + Visualize Top10 important features 
++ Output :
+  + Save model to HDFS
+  + Load the model from HDFS, 使用新的数据进行预测，结果保存至(暂时)Windows/Linux上的csv文件 . 
 
 
 ### Task4 - Front End Optimization - Frank 姜
