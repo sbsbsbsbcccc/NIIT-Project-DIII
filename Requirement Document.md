@@ -1,6 +1,5 @@
 ### Note
 
-+ 能抄即抄 ,节省时间 . 
 + 每位成员进行自己的部分时 , 需将**自己部分的工作流程 , 难点**另记录在个人文档中 , 方便后面整合 , 制作PPT和SRS . 
 + 不懂如何具体实现时ChatGPT是很好的辅助 .
 + 链接：https://pan.baidu.com/s/1ZhLTO1j1PWfKSX8ybn8Faw 提取码：s2n3 ubuntu虚拟机 
