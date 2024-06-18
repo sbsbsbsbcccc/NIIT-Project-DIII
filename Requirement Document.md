@@ -1,8 +1,7 @@
 ### Note
 
-+ 每位成员进行自己的部分时 , 需将**自己部分的工作流程 , 难点**另记录在个人文档中 , 方便后面整合 , 制作PPT和SRS . 
-+ 不懂如何具体实现时ChatGPT是很好的辅助 .
-+ 链接：https://pan.baidu.com/s/1ZhLTO1j1PWfKSX8ybn8Faw 提取码：s2n3 ubuntu虚拟机 
++ When each member is doing his or her part, he or she needs to record the workflow and difficulties of his or her part in a personal document, which will be convenient for later integration and making PPT and SRS.
++ Ubuntu virtual machine download link: https://pan.baidu.com/s/1ZhLTO1j1PWfKSX8ybn8Faw Extraction code: s2n3
 
 
 ### Task1 - Big Data Processing - Willson 余
@@ -20,9 +19,9 @@
 ### Task2 - Front End Basic Data Presentation - Michelanglo 廖
 
 #### Requirement
-+ 进行部分hive mapreduce工作 . 
-+ 用sqoop将数据从hive传到mysql . 
-+ 使用Python分析MySQL里的数据并可视化 , 分析结果图片保存到linux系统 .
++ Perform hive mapreduce work.
++ Use sqoop to transfer data from hive to MySQL. 
++ Use Python to analyze and visualize the data in MySQL, and save the analysis result figures to the Linux system.
 
 ### Task3 - Machine Learning using Spark - Henry Ma Yuchen
 
