@@ -37,7 +37,7 @@
   + Visualize Top10 important features 
 + Output :
   + Save model to HDFS
-  + Load the model from HDFS, 使用新的数据进行预测，结果保存至(暂时)Windows/Linux上的csv文件 . 
+  + Load the model from HDFS, predict new customer will exist or not, save result to .csv file on Linux . 
 
 
 ### Task4 - Front End Optimization - Frank 姜
