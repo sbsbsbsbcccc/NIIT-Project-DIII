@@ -10,7 +10,7 @@
 #### Requirement
 
 + 配置ubuntu虚拟机 , 包括安装大数据环境 , 配置静态网络 , 扩大内存和安装和配置一些常用的工具如vim fzf等 .
-+ 输入端 : 数据集 - 银行流失账户数据分析 数据集来源 : https://www.kaggle.com/competitions/playground-series-s4e1/data 参考分析 : https://www.kaggle.com/code/abdmental01/bank-churn-lightgbm-and-catboost-0-8945#8.-Lets-Visualize-the-data
++ 输入端 : 数据集 - 银行流失账户数据分析 数据集来源 : https://www.kaggle.com/competitions/playground-series-s4e1/data 
 + 用Flume从Linux系统上转移到HDFS . 
 + 用Hive生成表格 , 加载HDFS上的文件并进行部分的Mapreduce工作(参考分析8.1-8.7) . 
 + 编写mysql相关 , flume相关 , hive相关 , sqoop相关shell脚本 , 运行shell命令 .
