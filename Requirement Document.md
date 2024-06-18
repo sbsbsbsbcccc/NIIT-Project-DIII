@@ -10,11 +10,11 @@
 #### Requirement
 
 + Configure Ubuntu virtual machine, including installing big data environment, configuring static network, expanding memory and installing and configuring some common tools such as vim fzf, etc.
-+ 输入端 : 数据集 - 银行流失账户数据分析 数据集来源 : https://www.kaggle.com/competitions/playground-series-s4e1/data 
-+ 用Flume从Linux系统上转移到HDFS . 
-+ 用Hive生成表格 , 加载HDFS上的文件并进行部分的Mapreduce工作(参考分析8.1-8.7) . 
-+ 编写mysql相关 , flume相关 , hive相关 , sqoop相关shell脚本 , 运行shell命令 .
-+ 输出端 : MySQL数据 SHELL脚本
++ Input: Dataset - Bank churn dataset. Source: https://www.kaggle.com/competitions/playground-series-s4e1/data 
++ Use Flume to transfer from Linux system to HDFS. 
++ Use Hive to generate tables, load files on HDFS and perform Mapreduce work. 
++ Write mysql-related, flume-related, hive-related, sqoop-related shell scripts, and run shell commands.
++ Output: MySQL data SHELL script
 
 
 ### Task2 - Front End Basic Data Presentation - Michelanglo 廖
